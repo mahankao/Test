@@ -68,7 +68,7 @@ const chartValues = computed(() => {
 
 
 </script>
-<!-- Incomes.vue -->
+
 <template>
   <div class="incomes-page">
     <h1>Incomes</h1>
@@ -156,33 +156,8 @@ th, td {
   padding: 6px 12px;
   text-align: left;
 }
-.chart {
-  margin: 20px 0;
-}
+
 .pagination {
   margin-top: 12px;
-}
-.btn-update {
-  background-color: #3b82f6; /* голубой фон */
-  color: white;
-  font-weight: 500;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-update:hover {
-  background-color: #2563eb; /* более тёмный голубой при наведении */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-update:disabled {
-  background-color: #94a3b8; /* серый при дизейбле */
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 </style>

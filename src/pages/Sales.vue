@@ -5,19 +5,16 @@ import dayjs from 'dayjs'
 import GraphSales from "@/graph/GraphSales.vue";
 
 
-// Данные
 const sales = ref<any[]>([])
 const loading = ref(false)
 const page = ref(1)
 const limit = ref(100)
 
-// Фильтры
 const dateFrom = ref('2025-09-16')
 const dateTo = ref(dayjs().format('YYYY-MM-DD'))
 const selectedWarehouse = ref('')
 const selectedOblast = ref('')
 
-// Загрузка данных
 async function loadSales() {
   loading.value = true
   try {
@@ -37,7 +34,7 @@ async function loadSales() {
 }
 onMounted(loadSales)
 
-// Уникальные значения для фильтров
+
 const uniqueWarehouses = computed(() =>
     [...new Set(sales.value.map(o => o.warehouse_name))]
 )
@@ -45,14 +42,14 @@ const uniqueOblasts = computed(() =>
     [...new Set(sales.value.map(o => o.oblast))]
 )
 
-// Отфильтрованные заказы
+
 const filteredSales = computed(() =>
     sales.value.filter(o =>
         (!selectedWarehouse.value || o.warehouse_name === selectedWarehouse.value) &&
         (!selectedOblast.value || o.oblast === selectedOblast.value)
     )
 )
-// Готовим данные для графика (сумма товаров по дате)
+
 const chartLabels = computed(() => {
   const datesSet = new Set(filteredSales.value.map(i => i.date))
   return Array.from(datesSet).sort(
@@ -71,7 +68,7 @@ const chartValues = computed(() =>
 </script>
 
 <template>
-  <div class="orders-page">
+  <div class="sales-page">
     <h1>Sales</h1>
 
     <!-- Фильтры -->
@@ -141,7 +138,7 @@ const chartValues = computed(() =>
 </template>
 
 <style scoped>
-.orders-page {
+.sales-page {
   padding: 16px;
 }
 .filters {
